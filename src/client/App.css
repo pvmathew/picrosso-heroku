@@ -1,5 +1,44 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.page {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.page-enter {
+  opacity: 0;
+  /* transform: scale(1.1); */
+}
+
+.page-enter-active {
+  opacity: 1;
+  /* transform: scale(1); */
+  transition: opacity 1000ms;
+}
+
+.page-exit {
+  opacity: 1;
+  /* transform: scale(1); */
+}
+
+.page-exit-active {
+  opacity: 0;
+  /* transform: scale(0.9); */
+  transition: opacity 1000ms;
+}
+
+.message {
+  position: absolute;
+}
+
+.message-enter {
+  opacity: 0;
+}
+
+.message-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.message-exit {
+  opacity: 0;
 }
