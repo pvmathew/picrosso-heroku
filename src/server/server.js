@@ -4,8 +4,16 @@ import { StaticRouter } from "react-router-dom";
 import express from "express";
 import { renderToString } from "react-dom/server";
 import { loadNonogram } from "./file";
+const { Client } = require("pg");
 
-const pool = require("./pool");
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+client.connect();
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -19,7 +27,7 @@ server
       let randomNonogram = await loadNonogram();
       const { width, height, rows, columns, ans, ans_count } = randomNonogram;
       console.log(ans_count);
-      const newRoom = await pool.query(
+      const newRoom = await client.query(
         "INSERT INTO rooms (i_width, i_height, a_rows, a_columns, a_ans, history, i_correct, i_correct_ans) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
         [width, height, rows, columns, ans.split(""), "[]", 0, ans_count]
       );
