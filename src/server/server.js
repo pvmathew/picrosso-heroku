@@ -39,6 +39,19 @@ server
       console.error(err);
     }
   })
+  .get("/room", async (req, res) => {
+    const { id } = req.query;
+
+    console.log("CHecking if room " + id + " exists..");
+
+    const room = await client.query("SELECT * FROM rooms WHERE id=$1", [id]);
+
+    if (room.rowCount) {
+      res.json({ open: true, meta: room.rows[0] });
+    } else {
+      res.json({ open: false });
+    }
+  })
   .get("/*", (req, res) => {
     const context = {};
     const markup = renderToString(
