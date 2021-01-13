@@ -2,15 +2,14 @@ import React from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import Home from "./Home";
 import HostSettings from "./Host.js";
-// import Room from "./Room";
+import Room from "./Room";
 import { CSSTransition } from "react-transition-group";
-// import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 
 const routes = [
   { path: "/", name: "Home", Component: Home },
   { path: "/host", name: "Host Settings", Component: HostSettings },
-  // { path: "/room/:id", name: "Room", Component: Room },
+  { path: "/room/:id", name: "Room", Component: Room },
 ];
 
 const App = () => {
