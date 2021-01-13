@@ -13,9 +13,9 @@ import {
   Grid,
   Loader,
 } from "semantic-ui-react";
-// import PicrossWindow from "./PicrossWindow";
+import PicrossWindow from "./PicrossWindow";
 import CloseRoomModal from "./CloseRoomModal";
-// import WinModal from "./WinModal";
+import WinModal from "./WinModal";
 import socketIOClient from "socket.io-client";
 
 const Room = (props) => {
@@ -118,13 +118,13 @@ const Room = (props) => {
         </Grid>
         <Grid textAlign="center" verticalAlign="top">
           <Grid.Column>
-            {/* {loading ? (
+            {loading ? (
               <Loader />
             ) : (
               <PicrossWindow meta={meta} socket={socket} />
             )}
 
-            <WinModal won={won} id={id} closeRoom={() => setOpen(false)} /> */}
+            <WinModal won={won} id={id} closeRoom={() => setOpen(false)} /> 
 
             <Segment textAlign="left">
               <Header dividing>CHAT</Header>

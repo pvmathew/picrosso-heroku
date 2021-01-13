@@ -1,0 +1,16 @@
+.win-div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.win-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.win-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1000ms, transform 1000ms;
+}

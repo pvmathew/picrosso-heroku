@@ -1,0 +1,29 @@
+td:hover {
+  background-color: rgb(228, 228, 228);
+  cursor: pointer;
+}
+
+.cell {
+  height: 20px;
+  width: 20px;
+  border: solid 1px gray;
+  transition: "background-color 2000ms ease-out";
+  transform: scale(0.9);
+}
+
+.wrong {
+  transition: "background-color 2000ms ease-out";
+  background-color: red;
+}
+
+.wrong:hover {
+  background-color: red;
+}
+
+.correct {
+  background-color: black;
+}
+
+.correct:hover {
+  background-color: black;
+}
