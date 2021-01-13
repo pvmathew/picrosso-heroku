@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./react.svg";
 import "./Home.css";
 import { useHistory } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
 const Home = () => {
   const history = useHistory();
@@ -16,7 +17,7 @@ const Home = () => {
         To get started, edit <code>src/App.js</code> or <code>src/Home.js</code>{" "}
         and save to reload.
       </p>
-      <div onClick={() => history.push("/test")}>CLICK ME</div>
+      <Button onClick={() => history.push("/test")}>CLICK ME</Button>
     </div>
   );
 };
