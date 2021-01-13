@@ -25,13 +25,13 @@ const Main = (props) => {
     if (!roomNumber || isNaN(parseInt(roomNumber))) {
       return false;
     } else {
-      // const res = await axios.get("/room" + "?id=" + roomNumber);
-      // if (!res.data.open) {
-      //   return false;
-      // } else {
-      //   setMeta(res.data.meta);
-      //   return true;
-      // }
+      const res = await axios.get("/room" + "?id=" + roomNumber);
+      if (!res.data.open) {
+        return false;
+      } else {
+        setMeta(res.data.meta);
+        return true;
+      }
     }
   };
 
