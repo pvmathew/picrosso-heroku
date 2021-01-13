@@ -62,45 +62,45 @@ const Room = (props) => {
 
     socket.current = socketIOClient("?id=" + id);
 
-    // socket.current.on("new message", (msg) => {
-    //   setMessages((prevMsgs) => [...prevMsgs, msg]);
-    // });
+    socket.current.on("new message", (msg) => {
+      setMessages((prevMsgs) => [...prevMsgs, msg]);
+    });
 
-    // socket.current.on("finished puzzle", () => {
-    //   console.log("You finished the puzzle! Congrats!");
-    //   setWon(true);
-    // });
+    socket.current.on("finished puzzle", () => {
+      console.log("You finished the puzzle! Congrats!");
+      setWon(true);
+    });
 
-    // return () => {
-    //   socket.current.off("new message");
-    // };
+    return () => {
+      socket.current.off("new message");
+    };
   }, []);
 
-  // const scrollToBottom = () => {
-  //   messagesEnd.current.scrollIntoView({ behavior: "auto" });
-  // };
+  const scrollToBottom = () => {
+    messagesEnd.current.scrollIntoView({ behavior: "auto" });
+  };
 
-  // useEffect(scrollToBottom, [messages, message]);
+  useEffect(scrollToBottom, [messages, message]);
 
-  // const MessageList = () => (
-  //   <Segment
-  //     basic
-  //     style={{ overflow: "auto", height: 80, paddingTop: 0 }}
-  //     id="message-list"
-  //   >
-  //     <List>
-  //       {messages.map((message, index) => (
-  //         <List.Item key={index}>User: {message}</List.Item>
-  //       ))}
-  //     </List>
-  //     <div ref={messagesEnd}></div>
-  //   </Segment>
-  // );
+  const MessageList = () => (
+    <Segment
+      basic
+      style={{ overflow: "auto", height: 80, paddingTop: 0 }}
+      id="message-list"
+    >
+      <List>
+        {messages.map((message, index) => (
+          <List.Item key={index}>User: {message}</List.Item>
+        ))}
+      </List>
+      <div ref={messagesEnd}></div>
+    </Segment>
+  );
 
-  // const handleSubmit = () => {
-  //   socket.current.emit("chat message", message);
-  //   setMessage("");
-  // };
+  const handleSubmit = () => {
+    socket.current.emit("chat message", message);
+    setMessage("");
+  };
 
   return (
     <>
@@ -128,7 +128,7 @@ const Room = (props) => {
 
             <Segment textAlign="left">
               <Header dividing>CHAT</Header>
-              {/* <MessageList /> */}
+              <MessageList />
               <Form onSubmit={() => handleSubmit()}>
                 <Form.Field>
                   <input

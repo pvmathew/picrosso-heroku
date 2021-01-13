@@ -39,10 +39,10 @@ io.on("connection", (socket) => {
   //     if (i_correct === i_correct_ans) io.emit("finished puzzle", true);
   //   });
 
-  // socket.on("chat message", (msg) => {
-  //   console.log("Got message! Emitting to everyone..:" + msg);
-  //   io.emit("new message", msg);
-  // });
+  socket.on("chat message", (msg) => {
+    console.log("Got message! Emitting to everyone..:" + msg);
+    io.emit("new message", msg);
+  });
 
   // pool.query("SELECT a_ans FROM rooms WHERE id=$1", [roomID]).then((result) => {
   //   let ans = result.rows[0].a_ans;
