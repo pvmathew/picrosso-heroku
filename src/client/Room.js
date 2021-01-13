@@ -16,7 +16,7 @@ import {
 // import PicrossWindow from "./PicrossWindow";
 // import CloseRoomModal from "./CloseRoomModal";
 // import WinModal from "./WinModal";
-// import socketIOClient from "socket.io-client";
+import socketIOClient from "socket.io-client";
 // const ENDPOINT = "http://localhost:3000";
 
 const Room = (props) => {
@@ -29,7 +29,7 @@ const Room = (props) => {
   const [meta, setMeta] = useState({});
   const [won, setWon] = useState(false);
 
-  // let socket = useRef(null);
+  let socket = useRef(null);
   const history = useHistory();
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Room = (props) => {
     setMeta(data);
     setLoading(false);
 
-    // socket.current = socketIOClient(ENDPOINT + "?id=" + id);
+    socket.current = socketIOClient("?id=" + id);
 
     // socket.current.on("new message", (msg) => {
     //   setMessages((prevMsgs) => [...prevMsgs, msg]);

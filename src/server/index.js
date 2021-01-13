@@ -30,40 +30,41 @@ const io = require("socket.io")(server);
 
 io.on("connection", (socket) => {
   const roomID = socket.handshake.query.id;
+  console.log("Connection established with someone in room " + roomID);
 
-  pool
-    .query(`SELECT i_correct, i_correct_ans FROM rooms WHERE id=$1`, [roomID])
-    .then((result) => {
-      let { i_correct_ans, i_correct } = result.rows[0];
-      if (i_correct === i_correct_ans) io.emit("finished puzzle", true);
-    });
+  // pool
+  //   .query(`SELECT i_correct, i_correct_ans FROM rooms WHERE id=$1`, [roomID])
+  //   .then((result) => {
+  //     let { i_correct_ans, i_correct } = result.rows[0];
+  //     if (i_correct === i_correct_ans) io.emit("finished puzzle", true);
+  //   });
 
-  socket.on("chat message", (msg) => {
-    console.log("Got message! Emitting to everyone..:" + msg);
-    io.emit("new message", msg);
-  });
+  // socket.on("chat message", (msg) => {
+  //   console.log("Got message! Emitting to everyone..:" + msg);
+  //   io.emit("new message", msg);
+  // });
 
-  pool.query("SELECT a_ans FROM rooms WHERE id=$1", [roomID]).then((result) => {
-    let ans = result.rows[0].a_ans;
-    socket.on("cell click", (cellID) => {
-      let correctClick = ans[cellID] == 1;
-      console.log("Cell clicked! Emitting to everyone in room:" + roomID);
-      let json = JSON.stringify({ cell: cellID, correct: correctClick });
-      let int = correctClick ? 1 : 0;
-      pool
-        .query(
-          `UPDATE rooms 
-          SET history = 
-          history || $1::jsonb, i_correct = i_correct + $2
-          WHERE id=$3 returning i_correct_ans, i_correct;`,
-          [json, int, roomID]
-        )
-        .then((result) => {
-          let { i_correct_ans, i_correct } = result.rows[0];
-          if (i_correct === i_correct_ans) io.emit("finished puzzle", true);
-        });
+  // pool.query("SELECT a_ans FROM rooms WHERE id=$1", [roomID]).then((result) => {
+  //   let ans = result.rows[0].a_ans;
+  //   socket.on("cell click", (cellID) => {
+  //     let correctClick = ans[cellID] == 1;
+  //     console.log("Cell clicked! Emitting to everyone in room:" + roomID);
+  //     let json = JSON.stringify({ cell: cellID, correct: correctClick });
+  //     let int = correctClick ? 1 : 0;
+  //     pool
+  //       .query(
+  //         `UPDATE rooms
+  //         SET history =
+  //         history || $1::jsonb, i_correct = i_correct + $2
+  //         WHERE id=$3 returning i_correct_ans, i_correct;`,
+  //         [json, int, roomID]
+  //       )
+  //       .then((result) => {
+  //         let { i_correct_ans, i_correct } = result.rows[0];
+  //         if (i_correct === i_correct_ans) io.emit("finished puzzle", true);
+  //       });
 
-      io.emit("new cell click", { cellID, correctClick });
-    });
-  });
+  //     io.emit("new cell click", { cellID, correctClick });
+  //   });
+  // });
 });
