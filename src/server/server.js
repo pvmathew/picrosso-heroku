@@ -59,6 +59,13 @@ server
       res.json({ open: false });
     }
   })
+  .delete("/room", async (req, res) => {
+    const { id } = req.query;
+
+    console.log("Closing the room...");
+    const result = await client.query("DELETE FROM rooms WHERE id=$1", [id]);
+    res.json({ closed: true });
+  })
   .get("/*", (req, res) => {
     const context = {};
     const markup = renderToString(

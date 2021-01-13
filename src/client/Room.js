@@ -14,10 +14,9 @@ import {
   Loader,
 } from "semantic-ui-react";
 // import PicrossWindow from "./PicrossWindow";
-// import CloseRoomModal from "./CloseRoomModal";
+import CloseRoomModal from "./CloseRoomModal";
 // import WinModal from "./WinModal";
 import socketIOClient from "socket.io-client";
-// const ENDPOINT = "http://localhost:3000";
 
 const Room = (props) => {
   const { id } = useParams();
@@ -113,9 +112,9 @@ const Room = (props) => {
               <Icon name="arrow left" size="small" /> Back
             </Button>
           </Grid.Column>
-          {/* <Grid.Column floated="right" width={5} textAlign="right">
+          <Grid.Column floated="right" width={5} textAlign="right">
             <CloseRoomModal id={id} closeRoom={() => setOpen(false)} />
-          </Grid.Column> */}
+          </Grid.Column>
         </Grid>
         <Grid textAlign="center" verticalAlign="top">
           <Grid.Column>
