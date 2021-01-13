@@ -6,12 +6,19 @@ import { renderToString } from "react-dom/server";
 import { loadNonogram } from "./file";
 const { Client } = require("pg");
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+let pgConfig = process.env.DATABASE_URL
+  ? {
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    }
+  : {
+      user: "pavinmathew",
+      database: "picrosso",
+    };
+
+const client = new Client(pgConfig);
 
 client.connect();
 

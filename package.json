@@ -19,7 +19,9 @@
     "react-router-dom": "^5.2.0",
     "react-transition-group": "^4.4.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.1"
+    "semantic-ui-react": "^2.0.1",
+    "socket.io": "^3.0.5",
+    "socket.io-client": "^3.0.5"
   },
   "devDependencies": {
     "razzle": "^3.3.11"
