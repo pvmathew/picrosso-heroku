@@ -12,7 +12,7 @@ import {
 } from "semantic-ui-react";
 import { CSSTransition } from "react-transition-group";
 import { useHistory } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 
 const Main = (props) => {
   const history = useHistory();
