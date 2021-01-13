@@ -129,7 +129,7 @@ const Room = (props) => {
 
             <Segment textAlign="left">
               <Header dividing>CHAT</Header>
-              <MessageList />
+              {/* <MessageList /> */}
               <Form onSubmit={() => handleSubmit()}>
                 <Form.Field>
                   <input
