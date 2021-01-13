@@ -10,7 +10,7 @@ import {
   Container,
 } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 
 const HostSettings = (props) => {
   const [room, setRoom] = useState();
@@ -19,7 +19,7 @@ const HostSettings = (props) => {
   const history = useHistory();
 
   const handleGenerate = () => {
-    // axios.post("/room").then((res) => setRoom(res.data.room));
+    axios.post("/room").then((res) => setRoom(res.data.room));
   };
 
   useEffect(() => {
