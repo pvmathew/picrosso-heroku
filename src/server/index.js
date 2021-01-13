@@ -47,6 +47,7 @@ io.on("connection", (socket) => {
   client
     .query("SELECT a_ans FROM rooms WHERE id=$1", [roomID])
     .then((result) => {
+      console.log("got answer for this connection");
       let ans = result.rows[0].a_ans;
       socket.on("cell click", (cellID) => {
         let correctClick = ans[cellID] == 1;

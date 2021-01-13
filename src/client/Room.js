@@ -90,7 +90,7 @@ const Room = (props) => {
     >
       <List>
         {messages.map((message, index) => (
-          <List.Item key={index}>User: {message}</List.Item>
+          <List.Item key={index}>Anonymous Cool Person: {message}</List.Item>
         ))}
       </List>
       <div ref={messagesEnd}></div>
@@ -124,7 +124,7 @@ const Room = (props) => {
               <PicrossWindow meta={meta} socket={socket} />
             )}
 
-            <WinModal won={won} id={id} closeRoom={() => setOpen(false)} /> 
+            <WinModal won={won} id={id} closeRoom={() => setOpen(false)} />
 
             <Segment textAlign="left">
               <Header dividing>CHAT</Header>
