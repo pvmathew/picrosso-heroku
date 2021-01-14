@@ -1,8 +1,9 @@
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import React from "react";
+import React, { Suspense } from "react";
 import { hydrate } from "react-dom";
-import "semantic-ui-css/semantic.min.css"
+import "semantic-ui-css/semantic.min.css";
+import "./i18nextConfig";
 
 hydrate(
   <BrowserRouter>

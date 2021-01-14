@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Modal, Header, Icon, Button } from "semantic-ui-react";
 import { CSSTransition } from "react-transition-group";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const CloseRoomModal = (props) => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   const closeRoom = () => {
     axios.delete("/room?id=" + props.id).then((res) => {
@@ -22,16 +24,16 @@ const CloseRoomModal = (props) => {
       onOpen={() => setOpen(true)}
       open={open}
       size="small"
-      trigger={<Button color="red">Close Room</Button>}
+      trigger={<Button color="red">{t("close_room")}</Button>}
     >
       <Header icon>
         <CSSTransition appear timeout={300} in classNames="modal-transition">
           <Icon name="window close" />
         </CSSTransition>
-        Close Room
+        {t("close_room")}
       </Header>
       <Modal.Content>
-        <p>Are you sure you would like to close this room?</p>
+        <p>{t("close_confirm_text")}</p>
       </Modal.Content>
       <Modal.Actions>
         <Button basic color="red" inverted onClick={() => setOpen(false)}>

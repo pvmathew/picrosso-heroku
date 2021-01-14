@@ -11,12 +11,14 @@ import {
 } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const HostSettings = (props) => {
   const [room, setRoom] = useState();
   const [test, setTest] = useState(false);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const { t } = useTranslation();
 
   const handleGenerate = () => {
     axios.post("/room").then((res) => setRoom(res.data.room));
@@ -48,16 +50,16 @@ const HostSettings = (props) => {
 
             <Form size="large">
               <Segment stacked>
-                <Header as="h3">Your Room Number</Header>
+                <Header as="h3">{t("your_room_number")}</Header>
                 <Segment>{room}</Segment>
 
                 <Button onClick={() => history.push("/room/" + room)}>
-                  Connect
+                  {t("connect")}
                 </Button>
               </Segment>
             </Form>
             <Message>
-              <a href="#">What is this?</a>
+              <a href="#">{t("whats_this")}</a>
             </Message>
           </Grid.Column>
         </Grid>
@@ -105,12 +107,12 @@ const HostSettings = (props) => {
                   fluid
                   size="large"
                 >
-                  Generate Room
+                  {t("generate_room")}
                 </Button>
               </Segment>
             </Form>
             <Message>
-              <a href="#">What is this?</a>
+              <a href="#">{t("whats_this")}</a>
             </Message>
           </Grid.Column>
         </Grid>

@@ -1,0 +1,16 @@
+{
+  "whats_this": "PicrossOとは",
+  "join_room": "部屋に入る",
+  "host_room": "部屋を作る",
+  "room_number": "部屋番号",
+  "wrong_room_number": "空いてる部屋の部屋番号を入力してください",
+  "found_room": "部屋が見つかりました！",
+  "generate_room": "OK",
+  "your_room_number": "あなたの部屋番号は",
+  "connect": "移動する",
+  "back": "戻る",
+  "close_room": "部屋を閉じる",
+  "chat": "チャット",
+  "send": "送る",
+  "close_confirm_text": "この部屋を閉じてもいいですか？"
+}

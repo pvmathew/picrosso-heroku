@@ -1,0 +1,16 @@
+{
+  "whats_this": "What is this?",
+  "join_room": "Join Room",
+  "host_room": "Host Room",
+  "room_number": "Room Number",
+  "wrong_room_number": "Please enter a valid room number",
+  "found_room": "Room found! Now joining...",
+  "generate_room": "Generate Room",
+  "your_room_number": "Your Room Number",
+  "connect": "Connect",
+  "back": "Back",
+  "close_room": "Close Room",
+  "chat": "CHAT",
+  "send": "Send",
+  "close_confirm_text": "Are you sure you would like to close this room?"
+}

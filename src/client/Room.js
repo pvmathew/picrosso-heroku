@@ -1,6 +1,7 @@
 import { useParams, useHistory } from "react-router-dom";
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 import {
   Container,
@@ -27,6 +28,7 @@ const Room = (props) => {
   const [loading, setLoading] = useState(true);
   const [meta, setMeta] = useState({});
   const [won, setWon] = useState(false);
+  const { t } = useTranslation();
 
   let socket = useRef(null);
   const history = useHistory();
@@ -108,8 +110,7 @@ const Room = (props) => {
         <Grid>
           <Grid.Column floated="left" width={5}>
             <Button onClick={() => history.push("/")}>
-              BUTT
-              <Icon name="arrow left" size="small" /> Back
+              <Icon name="arrow left" size="small" /> {t("back")}
             </Button>
           </Grid.Column>
           <Grid.Column floated="right" width={5} textAlign="right">
@@ -127,7 +128,7 @@ const Room = (props) => {
             <WinModal won={won} id={id} closeRoom={() => setOpen(false)} />
 
             <Segment textAlign="left">
-              <Header dividing>CHAT</Header>
+              <Header dividing>{t("chat")}</Header>
               <MessageList />
               <Form onSubmit={() => handleSubmit()}>
                 <Form.Field>
@@ -139,7 +140,7 @@ const Room = (props) => {
                     placeholder="Enter a message here!"
                   />
                 </Form.Field>
-                <Button type="submit">Submit</Button>
+                <Button type="submit">{t("send")}</Button>
               </Form>
             </Segment>
           </Grid.Column>

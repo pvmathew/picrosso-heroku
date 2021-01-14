@@ -10,9 +10,10 @@ import {
   // Transition,
   Container,
 } from "semantic-ui-react";
-import { CSSTransition } from "react-transition-group";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+import LanguageSelect from "./LanguageSelect";
 
 const Main = (props) => {
   const history = useHistory();
@@ -20,6 +21,7 @@ const Main = (props) => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [meta, setMeta] = useState({});
+  const { t } = useTranslation();
 
   const checkRoomStatus = async () => {
     if (!roomNumber || isNaN(parseInt(roomNumber))) {
@@ -67,17 +69,17 @@ const Main = (props) => {
                 fluid
                 icon="chevron right"
                 iconPosition="left"
-                placeholder="Room Number"
+                placeholder={t("room_number")}
                 onChange={(e) => setRoomNumber(e.target.value)}
                 value={roomNumber}
               />
 
               {success && (
-                <Message positive header="Room found! Now joining..." />
+                <Message positive header={t("found_room")} />
               )}
 
               {error && (
-                <Message error header="Please enter a valid room number" />
+                <Message error header={t("wrong_room_number")} />
               )}
 
               <Button
@@ -94,7 +96,7 @@ const Main = (props) => {
                 fluid
                 size="large"
               >
-                Join Room
+                {t("join_room")}
               </Button>
               <Button
                 onClick={() => history.push("/host")}
@@ -102,13 +104,14 @@ const Main = (props) => {
                 fluid
                 size="large"
               >
-                Host Room
+                {t("host_room")}
               </Button>
             </Segment>
           </Form>
           <Message>
-            <a href="#">What is this?</a>
+            <a href="#">{t("whats_this")}</a>
           </Message>
+          <LanguageSelect />
         </Grid.Column>
       </Grid>
     </Container>
