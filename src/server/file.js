@@ -2,8 +2,18 @@
 import axios from "axios";
 
 export const loadNonogram = async () => {
+  let nonogramURLs = [
+    "https://raw.githubusercontent.com/mikix/nonogram-db/master/db/gnonograms/42.non",
+    "https://raw.githubusercontent.com/mikix/nonogram-db/master/db/gnonograms/blender.non",
+    "https://raw.githubusercontent.com/mikix/nonogram-db/master/db/gnonograms/gnome.non",
+    "https://raw.githubusercontent.com/mikix/nonogram-db/master/db/gnonograms/kde.non",
+    "https://raw.githubusercontent.com/mikix/nonogram-db/master/db/gnonograms/spade.non",
+    "https://raw.githubusercontent.com/mikix/nonogram-db/master/db/gnonograms/ubuntu.non",
+    "https://raw.githubusercontent.com/mikix/nonogram-db/master/db/gnonograms/wikimedia.non",
+  ];
+
   let res = await axios(
-    "https://raw.githubusercontent.com/mikix/nonogram-db/master/db/gnonograms/42.non"
+    nonogramURLs[Math.floor(Math.random() * nonogramURLs.length)]
   );
   let data = res.data;
   const lines = data.split("\n");
